@@ -13,6 +13,7 @@ submitEng.addEventListener('click', e => {
     const selectedGender = genderEng[0].checked ? "male" : "female";
 
     bmiOutput.innerHTML = calcBMIEng(weightEng.value, heightEng.value);
+    bmrOutput.innerHTML = calcBMREng(weightEng.value, heightEng.value, ageEng.value, selectedGender);
 });
 
 function calcBMIEng(weight, height) {
@@ -34,4 +35,12 @@ function calcBMIEng(weight, height) {
     }
 
     return `BMI: ${bmi}, ${classBMI}`;
+}
+
+function calcBMREng(weight, height, age, gender) {
+    if (gender === 'male') {
+        return `BMR: ${((4.536 * weight) + (15.88 * height) - (5 * age) + 5).toFixed(1)}`;
+    } else if (gender === 'female') {
+        return `BMR: ${((4.536 * weight) + (15.88 * height) - (5 * age) - 161).toFixed(1)}`;
+    }
 }
