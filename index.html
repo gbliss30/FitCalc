@@ -1,9 +1,7 @@
 <!--
 Designed by Gabriel Bliss, © 2021
 Created on: 08/25/2021
-Last update: 08/25/2021
-
-Based on Start Bootstrap 'Scrolling Nav' template
+Last update: 08/26/2021
 -->
 
 <!DOCTYPE html>
@@ -21,35 +19,43 @@ Based on Start Bootstrap 'Scrolling Nav' template
     <main class="container">
         <!-- input -->
         <section class="input">
+            <form id="Form">
+                <input type="radio" name="system" id="eng" value="eng" checked>
+                <label for="eng">English</label>
+                <input type="radio" name="system" id="met" value="met" >
+                <label for="met">Metric</label><br><br>
 
-            <div class="selection">
-                <h3>English (Lbs, Inches)</h3>
-            </div>
-            
-            <section class="english">
-                <form id="englishForm">
-                    <input type="text" id="weightEng" placeholder="Weight in lbs" value="230"required><br>
-                    <input type="number" id="heightEng" placeholder="Height in inches" value="69" required><br>
-                    <input type="number" id="ageEng" placeholder="Age in years" value="32" required><br>
+                <input type="text" id="weight" placeholder="Weight in lbs/kg" required><br>
+                <input type="number" id="height" placeholder="Height in inches/cm" required><br>
+                <input type="number" id="age" placeholder="Age in years" required><br><br>
 
-                    <input type="radio" name="genderEng" id="maleEng" value="male" checked>
-                    <label for="maleEng">Male</label>
-                    <input type="radio" name="genderEng" id="femaleEng" value="female">
-                    <label for="femaleEng">Female</label><br>
+                <input type="radio" name="gender" id="male" value="male" checked>
+                <label for="male">Male</label>
+                <input type="radio" name="gender" id="female" value="female">
+                <label for="female">Female</label><br><br>
 
-                    <input type="submit" id="submitEng">
-                </form>
-            </section>
+                <label for="activity">How active are you?</label><br>
+                <select id="activity" name="activity">
+                    <option value="1.2" checked>Sedentary</option>
+                    <option value="1.375">Lightly Active (1-3x Wk)</option>
+                    <option value="1.55">Moderately Active (3-5x Wk)</option>
+                    <option value="1.725">Very Active (6-7x Wk)</option>
+                    <option value="1.9">Extremely Active (2x/Day)</option>
+                </select><br><br><hr><br>
+
+                <input type="submit" id="submit">
+            </form>
         </section>
 
         <!-- output -->
         <section class="output">
             <div class="basic">
-                <span id="BMI"></span><br />
-                <span id="BMR"></span>
+                <span id="BMI"></span><br>
+                <span id="BMR"></span><br>
+                <span id="TDEE"></span><br>
             </div>
         </section>
     </main>
-    <script src="./scripts/mainENG.js"></script>
+    <script src="./scripts/main.js"></script>
 </body>
 </html>
