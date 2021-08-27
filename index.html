@@ -25,31 +25,33 @@ Last update: 08/26/2021
                 <input type="radio" name="system" id="met" value="met" >
                 <label for="met">Metric</label><br><br>
 
-                <input type="text" id="weight" placeholder="Weight in lbs/kg" required><br>
-                <input type="number" id="height" placeholder="Height in inches/cm" required><br>
-                <input type="number" id="age" placeholder="Age in years" required><br><br>
+                <input type="text" id="weight" placeholder="Weight in lbs/kg" required ><br>
+                <input type="number" id="height" placeholder="Height in inches/cm" required ><br>
+                <input type="number" id="age" placeholder="Age in years" required ><br><br>
 
                 <input type="radio" name="gender" id="male" value="male" checked>
                 <label for="male">Male</label>
                 <input type="radio" name="gender" id="female" value="female">
                 <label for="female">Female</label><br><br>
 
-                <label for="activity">How active are you?</label><br>
                 <select id="activity" name="activity">
-                    <option value="1.2" checked>Sedentary</option>
+                    <option selected="true" disabled="disabled" hidden>How much do you exercise?</option>
+                    <option value="1.2">Sedentary</option>
                     <option value="1.375">Lightly Active (1-3x Wk)</option>
                     <option value="1.55">Moderately Active (3-5x Wk)</option>
                     <option value="1.725">Very Active (6-7x Wk)</option>
                     <option value="1.9">Extremely Active (2x/Day)</option>
-                </select><br><br><hr><br>
+                </select><br><br>
 
                 <input type="submit" id="submit">
+                <input type="reset" id="reset">
             </form>
         </section>
 
         <!-- output -->
         <section class="output">
             <div class="basic">
+                <span id="alert"></span>
                 <span id="BMI"></span><br>
                 <span id="BMR"></span><br>
                 <span id="TDEE"></span><br>

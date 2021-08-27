@@ -4,29 +4,50 @@ const weight = document.querySelector('#weight');
 const height = document.querySelector('#height');
 const age = document.querySelector('#age');
 const gender = document.querySelectorAll('input[name="gender"]');
-const submit = document.querySelector('#submit');
 const activity = document.querySelector('#activity');
+const submit = document.querySelector('#submit');
+const reset = document.querySelector('#reset');
 
 //outputs
 const bmiOutput = document.querySelector('#BMI');
 const bmrOutput = document.querySelector('#BMR');
 const tdeeOutput = document.querySelector('#TDEE');
+const alert = document.querySelector('#alert');
 
 //submit
 submit.addEventListener('click', e => {
     e.preventDefault();
     const selectedGender = gender[0].checked ? "male" : "female";
     const system = measurement[0].checked ? "english" : "metric";
-    //store variables
-    const BMI = calcBMI(weight.value, height.value, system);
-    const BMR = calcBMR(weight.value, height.value, age.value, selectedGender, system).toFixed(1);
-    const TDEE = calcTDEE(BMR, activity.value, system).toFixed(1);
+
+    let BMI,
+        BMR,
+        TDEE;
+
+    //Check falsy & run calculations
+    if (weight.value && height.value && age.value && activity.value) {
+        BMI = calcBMI(weight.value, height.value, system);
+        BMR = calcBMR(weight.value, height.value, age.value, selectedGender, system).toFixed(1);
+        TDEE = calcTDEE(BMR, activity.value, system).toFixed(1);
+    } else {
+        alert.innerHTML = "error";
+    }
+    
 
     //Output
     bmiOutput.innerHTML = `BMI: ${BMI[0].toFixed(1)}, ${BMI[1]}`
     bmrOutput.innerHTML = `BMR: ${BMR}`;
     tdeeOutput.innerHTML = `TDEE: ${TDEE}`;
 });
+
+//clear output
+reset.addEventListener('click', e => {
+    e.preventDefault();
+    let output = alert.parentElement.children;
+    Object.values(output).forEach(node => {
+        node.innerHTML = '';
+    });
+})
 
 function calcBMI(weight, height, system) {
     let bmi;
@@ -65,7 +86,7 @@ function calcBMR(weight, height, age, gender, system) {
         total = -161;
     }
     
-    //return on the fly english-metric conversion
+    //return english-metric conversion
     if (system === "metric") {
         return total + (10 * weight) + (6.25 * height) - (5 * age);
     } else {
