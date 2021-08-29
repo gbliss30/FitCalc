@@ -5,8 +5,6 @@ const height = document.querySelector('#height');
 const age = document.querySelector('#age');
 const gender = document.querySelectorAll('input[name="gender"]');
 const activity = document.querySelector('#activity');
-const submit = document.querySelector('#submit');
-const reset = document.querySelector('#reset');
 
 //outputs
 const bmiOutput = document.querySelector('#BMI');
@@ -15,7 +13,7 @@ const tdeeOutput = document.querySelector('#TDEE');
 const alert = document.querySelector('#alert');
 
 //submit
-submit.addEventListener('click', e => {
+const submit = document.querySelector('#submit').addEventListener('click', e => {
     e.preventDefault();
     const selectedGender = gender[0].checked ? "male" : "female";
     const system = measurement[0].checked ? "english" : "metric";
@@ -25,12 +23,12 @@ submit.addEventListener('click', e => {
         TDEE;
 
     //Check falsy & run calculations
-    if (weight.value && height.value && age.value && activity.value) {
+    if (weight.value && height.value && age.value && activity.value !== "null") {
         BMI = calcBMI(weight.value, height.value, system);
         BMR = calcBMR(weight.value, height.value, age.value, selectedGender, system).toFixed(1);
         TDEE = calcTDEE(BMR, activity.value, system).toFixed(1);
     } else {
-        alert.innerHTML = "error";
+        showAlert('Please enter correct values', 'error')
     }
     
 
@@ -41,7 +39,7 @@ submit.addEventListener('click', e => {
 });
 
 //clear output
-reset.addEventListener('click', e => {
+const reset = document.querySelector('#reset').addEventListener('click', e => {
     e.preventDefault();
     let output = alert.parentElement.children;
     Object.values(output).forEach(node => {
@@ -97,4 +95,16 @@ function calcBMR(weight, height, age, gender, system) {
 
 function calcTDEE(BMR, activity) {
     return (BMR * activity);
+}
+
+function showAlert(message, type) {
+    alert.style.visibility = 'visible';
+    alert.className += ` ${type}`;
+    alert.innerHTML = message;
+
+    setTimeout(() => {
+        alert.innerHTML = '';
+        alert.classList.remove(`${type}`)
+        alert.style.visibility = 'invisible';
+    }, 3000);
 }
