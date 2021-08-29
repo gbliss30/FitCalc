@@ -22,7 +22,7 @@ Last update: 08/26/2021
     <main class="container">
         <!-- input -->
         <section class="input">
-            <form id="Form">
+            <form id="basicForm">
                 <input type="radio" name="system" id="eng" value="eng" checked>
                 <label for="eng">English</label>
                 <input type="radio" name="system" id="met" value="met" >
@@ -46,8 +46,47 @@ Last update: 08/26/2021
                     <option value="1.9">Extremely Active (2x/Day)</option>
                 </select><br><br>
 
-                <input type="submit" id="submit">
-                <input type="reset" id="reset">
+                <p>Submit basic measurements</p>
+                <hr>
+                <div class="buttons">
+                    <input type="submit" id="submit">
+                    <input type="reset" id="reset">
+                </div>
+                <hr>
+            </form>
+            
+            <!-- <ul>
+                <li>5/3/1</li>
+                <li>Starting Strength</li>
+            </ul> -->
+
+            <form>
+                <div class="liftInput">
+                    <p>OHP</p>
+                    <input class="weight" type="number" id="ohpWeight" placeholder="Weight" required >
+                    <input class="reps" type="number" id="ohpReps" placeholder="Reps" required >
+                </div>
+                <div class="liftInput">
+                    <p>Deadlift</p>
+                    <input class="weight" type="number" id="deadliftWeight" placeholder="Weight" required >
+                    <input class="reps" type="number" id="deadliftReps" placeholder="Reps" required >
+                </div>
+                <div class="liftInput">
+                    <p>Bench</p>
+                    <input class="weight" type="number" id="benchWeight" placeholder="Weight" required >
+                    <input class="reps" type="number" id="benchReps" placeholder="Reps" required >
+                </div>
+                <div class="liftInput">
+                    <p>Squat</p>
+                    <input class="weight" type="number" id="squatWeight" placeholder="Weight" required >
+                    <input class="reps" type="number" id="squatReps" placeholder="Reps" required >
+                </div><br>
+                <hr>
+                <div class="buttons">
+                    <input type="submit" id="submit">
+                    <input type="reset" id="reset">
+                </div>
+                <hr>
             </form>
         </section>
 
@@ -59,8 +98,17 @@ Last update: 08/26/2021
                 <span id="BMR"></span><br>
                 <span id="TDEE"></span><br>
             </div>
+            <div class="programOutput">
+                <div class="gridContainer">
+                    <div class="gridTitle"></div>
+                    <div class="gridTitle"></div>
+                    <div class="gridTitle"></div>
+                    <div class="gridTitle"></div>
+                </div>
+            </div>
         </section>
     </main>
     <script src="./scripts/main.js"></script>
+    <script src="./scripts/531.js"></script>
 </body>
 </html>

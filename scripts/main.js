@@ -7,6 +7,7 @@ const gender = document.querySelectorAll('input[name="gender"]');
 const activity = document.querySelector('#activity');
 
 //outputs
+const outputContainer = document.querySelector('.basic');
 const bmiOutput = document.querySelector('#BMI');
 const bmrOutput = document.querySelector('#BMR');
 const tdeeOutput = document.querySelector('#TDEE');
@@ -24,6 +25,7 @@ const submit = document.querySelector('#submit').addEventListener('click', e => 
 
     //Check falsy & run calculations
     if (weight.value && height.value && age.value && activity.value !== "null") {
+        outputContainer.style.visibility = 'visible';
         BMI = calcBMI(weight.value, height.value, system);
         BMR = calcBMR(weight.value, height.value, age.value, selectedGender, system).toFixed(1);
         TDEE = calcTDEE(BMR, activity.value, system).toFixed(1);
@@ -105,6 +107,6 @@ function showAlert(message, type) {
     setTimeout(() => {
         alert.innerHTML = '';
         alert.classList.remove(`${type}`)
-        alert.style.visibility = 'invisible';
+        alert.style.visibility = 'hidden';
     }, 3000);
 }
