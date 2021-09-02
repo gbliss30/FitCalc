@@ -39,7 +39,11 @@ document.querySelector('#submitWeight').addEventListener('click', e => {
     };
 });
 
-
+//reset
+document.querySelector('#resetWeight').addEventListener('click', e => {
+    e.preventDefault();
+    workoutOutput.innerHTML = "";
+})
 
 //lifts array indexes
 //0 & 1 = OHP weight/reps
@@ -88,17 +92,17 @@ function calcFiveThreeOne(lifts, formula, system) {
         </tr>
         <tr>
             <th><strong>Set 2</strong></th>
-            <td>${finalCalc(ohp, 5, .65)}</td>
-            <td>${finalCalc(ohp, 3, .70)}</td>
             <td>${finalCalc(ohp, 5, .75)}</td>
-            <td>${finalCalc(ohp, 5, .40)}</td>
+            <td>${finalCalc(ohp, 3, .80)}</td>
+            <td>${finalCalc(ohp, 3, .85)}</td>
+            <td>${finalCalc(ohp, 5, .50)}</td>
         </tr>
         <tr>
             <th><strong>Set 3</strong></th>
-            <td>${finalCalc(ohp, 5, .65)}</td>
-            <td>${finalCalc(ohp, 3, .70)}</td>
-            <td>${finalCalc(ohp, 5, .75)}</td>
-            <td>${finalCalc(ohp, 5, .40)}</td>
+            <td>${finalCalc(ohp, "5+", .85)}</td>
+            <td>${finalCalc(ohp, "3+", .90)}</td>
+            <td>${finalCalc(ohp, "1+", .95)}</td>
+            <td>${finalCalc(ohp, "5+", .60)}</td>
         </tr>
         <tr>
             <th class="distinct">Deadlift</th>
@@ -116,17 +120,17 @@ function calcFiveThreeOne(lifts, formula, system) {
         </tr>
         <tr>
             <th><strong>Set 2</strong></th>
-            <td>${finalCalc(deadlift, 5, .65)}</td>
-            <td>${finalCalc(deadlift, 3, .70)}</td>
             <td>${finalCalc(deadlift, 5, .75)}</td>
-            <td>${finalCalc(deadlift, 5, .40)}</td>
+            <td>${finalCalc(deadlift, 3, .80)}</td>
+            <td>${finalCalc(deadlift, 3, .85)}</td>
+            <td>${finalCalc(deadlift, 5, .50)}</td>
         </tr>
         <tr>
             <th><strong>Set 3</strong></th>
-            <td>${finalCalc(deadlift, 5, .65)}</td>
-            <td>${finalCalc(deadlift, 3, .70)}</td>
-            <td>${finalCalc(deadlift, 5, .75)}</td>
-            <td>${finalCalc(deadlift, 5, .40)}</td>
+            <td>${finalCalc(deadlift, "5+", .85)}</td>
+            <td>${finalCalc(deadlift, "3+", .90)}</td>
+            <td>${finalCalc(deadlift, "1+", .95)}</td>
+            <td>${finalCalc(deadlift, "5+", .60)}</td>
         </tr>
         <tr>
             <th class="distinct">Bench Press</th>
@@ -144,17 +148,17 @@ function calcFiveThreeOne(lifts, formula, system) {
         </tr>
         <tr>
             <th><strong>Set 2</strong></th>
-            <td>${finalCalc(bench, 5, .65)}</td>
-            <td>${finalCalc(bench, 3, .70)}</td>
             <td>${finalCalc(bench, 5, .75)}</td>
-            <td>${finalCalc(bench, 5, .40)}</td>
+            <td>${finalCalc(bench, 3, .80)}</td>
+            <td>${finalCalc(bench, 3, .85)}</td>
+            <td>${finalCalc(bench, 5, .50)}</td>
         </tr>
         <tr>
             <th><strong>Set 3</strong></th>
-            <td>${finalCalc(bench, 5, .65)}</td>
-            <td>${finalCalc(bench, 3, .70)}</td>
-            <td>${finalCalc(bench, 5, .75)}</td>
-            <td>${finalCalc(bench, 5, .40)}</td>
+            <td>${finalCalc(bench, "5+", .85)}</td>
+            <td>${finalCalc(bench, "3+", .90)}</td>
+            <td>${finalCalc(bench, "1+", .95)}</td>
+            <td>${finalCalc(bench, "5+", .60)}</td>
         </tr>
         <tr>
             <th class="distinct">Squat</th>
@@ -172,17 +176,17 @@ function calcFiveThreeOne(lifts, formula, system) {
         </tr>
         <tr>
             <th><strong>Set 2</strong></th>
-            <td>${finalCalc(squat, 5, .65)}</td>
-            <td>${finalCalc(squat, 3, .70)}</td>
             <td>${finalCalc(squat, 5, .75)}</td>
-            <td>${finalCalc(squat, 5, .40)}</td>
+            <td>${finalCalc(squat, 3, .80)}</td>
+            <td>${finalCalc(squat, 3, .85)}</td>
+            <td>${finalCalc(squat, 5, .50)}</td>
         </tr>
         <tr>
             <th><strong>Set 3</strong></th>
-            <td>${finalCalc(squat, 5, .65)}</td>
-            <td>${finalCalc(squat, 3, .70)}</td>
-            <td>${finalCalc(squat, 5, .75)}</td>
-            <td>${finalCalc(squat, 5, .40)}</td>
+            <td>${finalCalc(squat, "5+", .85)}</td>
+            <td>${finalCalc(squat, "3+", .90)}</td>
+            <td>${finalCalc(squat, "1+", .95)}</td>
+            <td>${finalCalc(squat, "5+", .60)}</td>
         </tr>
     </table>
     `;
@@ -190,7 +194,7 @@ function calcFiveThreeOne(lifts, formula, system) {
     //construct table row data
     function finalCalc(lift, reps, percent) {
         PlateArray = calcPlates(calcPercent(lift, percent), system);
-        return `${reps} reps at ${100*percent}% ${Math.floor(lift)}${system}<br> <strong>${calcPercent(lift, percent)} ${system}</strong> (${PlateArray})`;
+        return `${reps} reps at ${100*percent}% ${Math.floor(lift)}${system}<br> <strong>${calcPercent(lift, percent)} ${system}</strong> (${PlateArray})`;        
     }
 
     //get the total equal to the smallest plate size

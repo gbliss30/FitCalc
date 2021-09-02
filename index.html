@@ -1,7 +1,7 @@
 <!--
 Designed by Gabriel Bliss, © 2021
-Created on: 08/25/2021
-Last update: 08/31/2021
+Created on: 8/25/2021
+Last update: 9/1/2021
 -->
 
 <!DOCTYPE html>
@@ -65,6 +65,7 @@ Last update: 08/31/2021
                 </div>
             </form>
             
+            <!-- This will be the selection area for multiple workout programs-->
             <!-- <ul>
                 <li>5/3/1</li>
                 <li>Starting Strength</li>
@@ -82,29 +83,29 @@ Last update: 08/31/2021
                         </div>
                         <p>Overhead Press</p>
                         <div class="lift">
-                            <input name="fivethreeone" type="number" id="Weight" placeholder="Weight" required value='200'>
-                            <input name="fivethreeone" type="number" id="Reps" placeholder="Reps" required value='1'>
+                            <input name="fivethreeone" type="number" id="Weight" placeholder="Weight" required>
+                            <input name="fivethreeone" type="number" id="Reps" placeholder="Reps" required>
                         </div>
                         <p>Deadlift</p>
                         <div class="lift">
-                            <input name="fivethreeone" type="number" id="Weight" placeholder="Weight" required value='480'>
-                            <input name="fivethreeone" type="number" id="Reps" placeholder="Reps" required value='2'>
+                            <input name="fivethreeone" type="number" id="Weight" placeholder="Weight" required>
+                            <input name="fivethreeone" type="number" id="Reps" placeholder="Reps" required>
                         </div>
                         <p>Bench</p>
                         <div class="lift">    
-                            <input name="fivethreeone" type="number" id="Weight" placeholder="Weight" required value='300'>
-                            <input name="fivethreeone" type="number" id="Reps" placeholder="Reps" required value='3'>
+                            <input name="fivethreeone" type="number" id="Weight" placeholder="Weight" required >
+                            <input name="fivethreeone" type="number" id="Reps" placeholder="Reps" required>
                         </div>
                         <p>Squat</p>
                         <div class="lift">
-                            <input name="fivethreeone" type="number" id="Weight" placeholder="Weight" required value='600'>
-                            <input name="fivethreeone" type="number" id="Reps" placeholder="Reps" required value='4'>
+                            <input name="fivethreeone" type="number" id="Weight" placeholder="Weight" required>
+                            <input name="fivethreeone" type="number" id="Reps" placeholder="Reps" required>
                         </div>
                     </div>
 
                     <select id="oneRepMaxFormula" name="oneRepMaxFormula">
-                        <option disabled="disabled" value="null" hidden>What one rep max formula?</option>
-                        <option value="Brzycki" selected="true">Brzycki (&lt;5 reps, reccomended)</option>
+                        <option disabled="disabled" value="null" selected="true" hidden>What one rep max formula?</option>
+                        <option value="Brzycki">Brzycki (&lt;5 reps, reccomended)</option>
                         <option value="Epley">Epley (&lt;10 reps max)</option>
                     </select>
                 </div>
@@ -118,8 +119,7 @@ Last update: 08/31/2021
         </section>
         <!-- output -->
         <section class="output">
-            <div class="basic">
-                
+            <div class="basic">                
                 <span id="BMI"></span>
                 <span id="BMR"></span>
                 <span id="TDEE"></span>

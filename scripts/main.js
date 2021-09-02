@@ -47,10 +47,10 @@ const submit = document.querySelector('#submitBasic').addEventListener('click', 
 //clear output
 const reset = document.querySelector('#resetBasic').addEventListener('click', e => {
     e.preventDefault();
-    let output = alert.parentElement.children;
-    Object.values(output).forEach(node => {
-        node.innerHTML = '';
-    });
+    
+    Object.values(outputContainer.children).forEach(child => {
+        child.innerHTML = "";
+    })
 })
 
 function calcBMI(weight, height, system) {
