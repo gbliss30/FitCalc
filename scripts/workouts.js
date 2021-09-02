@@ -221,7 +221,7 @@ function calcPlates(lift, system) {
                 //determine if multiple plates will be used
                 if (Math.floor(total / (plate*2)) >= 2) {
                     //add multiple instances of that plate to the array
-                    for (let i = 0; i < (Math.floor(total/(plate*2)) - 1); i++) {
+                    for (let i = 0; i < Math.floor(total/(plate*2) - 1); i++) {
                         platesNeeded.push(plate);
                         total -= (Math.floor(total / (plate*2)) * (plate*2));
                     }
@@ -238,7 +238,7 @@ function calcPlates(lift, system) {
         kgs.forEach(plate => {
             if (Math.floor(total / (plate*2)) >= 1) {
                 if (Math.floor(total / (plate*2)) >= 2) {
-                    for (let i = 0; i < (Math.floor(total/(plate*2)) - 1); i++) {
+                    for (let i = 0; i < Math.floor(total/(plate*2) - 1); i++) {
                         platesNeeded.push(plate);
                     }
                 }
