@@ -4,7 +4,6 @@ const select1RM = document.querySelector('#oneRepMaxFormula');
 const measurementSys = document.querySelectorAll('input[name="system531"]');
 
 //output
-const oneRMFormula = document.querySelector('#oneRMFormula');
 const workoutOutput = document.querySelector('.weight');
 
 //submit
@@ -70,11 +69,13 @@ function calcFiveThreeOne(lifts, formula, system) {
         squat = lifts[6] * (1 + (lifts[7]/30));
     };
 
-    console.log()
-
     //create table
-    return `<h3>5/3/1 - 4 Week Template</h3>
-    <p>Bar assumed to be 45Lbs/20Kgs, working weight (bold) rounded down to the closest 2.5lbs/kg.</p><br>
+    return `<h3>5/3/1 - 4 Week Template - <a href="https://www.t-nation.com/workouts/5-3-1-how-to-build-pure-strength/">Read More</a></h3>
+    <p>When you have reached Week 4, restart with +5 pounds on Bench and OHP, +10 pounds on Squat and Deadlift.</p><br>
+    <p>The assistance program is optional, or can be substituted for other similar pulling/pushing motions.</p><br>
+    <p>The last set on each day is read as "The minimum is X reps, but do as many as you can." This is where strength is built. If you can't do the minimum, your 1RM is not accurate.</p><br>
+    <p>Your 3RM should equal aproximately 90% of your 1RM. If at any point in the future </p>
+    <p>Bar assumed to be 45Lbs/20Kgs, working weight (<strong>bold</strong>) rounded down to the closest 2.5lbs/kg. Parenthesis denotes the weights you will load onto each side of the bar.</p><br>
     <table id="displayData">
         <tr>
             <th class="distinct">OHP</th>
@@ -191,15 +192,25 @@ function calcFiveThreeOne(lifts, formula, system) {
     </table>
     `;
 
+    //construct four week table
+    // function constructFourWeekProgram(lift) {
+    //     return `
+    //     <tr>
+
+    //     `;
+    // }
+
+    function 
+
     //construct table row data
     function finalCalc(lift, reps, percent) {
         PlateArray = calcPlates(calcPercent(lift, percent), system);
-        return `${reps} reps at ${100*percent}% ${Math.floor(lift)}${system}<br> <strong>${calcPercent(lift, percent)} ${system}</strong> (${PlateArray})`;        
+        return `${reps} reps at ${100*percent}% of your 1RM: ${Math.floor(lift)}${system}<br> <strong>${calcPercent(lift, percent)} ${system}</strong> (${PlateArray})`;        
     }
 
     //get the total equal to the smallest plate size
     function calcPercent(lift, percent) {
-        return (Math.floor((lift * percent) / 2.5) * 2.5)
+        return (Math.round((lift * percent) / 2.5) * 2.5)
     }
     
     function calcPlates(lift, system) {
@@ -219,7 +230,7 @@ function calcFiveThreeOne(lifts, formula, system) {
                     //determine if multiple plates will be used
                     if (Math.floor(total / (plate*2)) >= 2) {
                         //add multiple instances of that plate to the array
-                        for (let i = 0; i < Math.floor(total/(plate*2) - 1); i++) {
+                        for (let i = 0; i < (Math.floor(total/(plate*2)) - 1); i++) {
                             platesNeeded.push(plate);
                         }
                     }
@@ -230,7 +241,7 @@ function calcFiveThreeOne(lifts, formula, system) {
             });
         } 
         else if (system === 'kgs') {
-            //identical, but 20kg bar instead of 45lbs
+            //identical, but 20kg bar
             let total = lift - 20;
             kgs.forEach(plate => {
                 if (Math.floor(total / (plate*2)) >= 1) {
