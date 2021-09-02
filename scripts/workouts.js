@@ -216,18 +216,19 @@ function calcPlates(lift, system) {
         let total = lift - 45;
         //iterate through array of plates used
         lbs.forEach(plate => {
+            let plateMath = Math.floor(total / (plate*2));
             //determine if the current iteration plate will be used
-            if (Math.floor(total / (plate*2)) >= 1) {
+            if (plateMath >= 1) {
                 //determine if multiple plates will be used
-                if (Math.floor(total / (plate*2)) >= 2) {
+                if (plateMath >= 2) {
                     //add multiple instances of that plate to the array
-                    for (let i = 0; i < Math.floor(total/(plate*2) - 1); i++) {
+                    for (let i = 1; i < plateMath; i++) {
                         platesNeeded.push(plate);
                         total -= (Math.floor(total / (plate*2)) * (plate*2));
                     }
                 }
                 platesNeeded.push(plate);
-                
+
                 total -= (Math.floor(total / (plate*2)) * (plate*2));
             }
         });
@@ -238,7 +239,7 @@ function calcPlates(lift, system) {
         kgs.forEach(plate => {
             if (Math.floor(total / (plate*2)) >= 1) {
                 if (Math.floor(total / (plate*2)) >= 2) {
-                    for (let i = 0; i < Math.floor(total/(plate*2) - 1); i++) {
+                    for (let k = 0; k < Math.floor(total/(plate*2) - 1); i++) {
                         platesNeeded.push(plate);
                     }
                 }
