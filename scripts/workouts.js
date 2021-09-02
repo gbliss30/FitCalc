@@ -192,71 +192,62 @@ function calcFiveThreeOne(lifts, formula, system) {
     </table>
     `;
 
-    //construct four week table
-    // function constructFourWeekProgram(lift) {
-    //     return `
-    //     <tr>
-
-    //     `;
-    // }
-
-    function 
-
     //construct table row data
     function finalCalc(lift, reps, percent) {
         PlateArray = calcPlates(calcPercent(lift, percent), system);
         return `${reps} reps at ${100*percent}% of your 1RM: ${Math.floor(lift)}${system}<br> <strong>${calcPercent(lift, percent)} ${system}</strong> (${PlateArray})`;        
     }
+}
 
-    //get the total equal to the smallest plate size
-    function calcPercent(lift, percent) {
-        return (Math.round((lift * percent) / 2.5) * 2.5)
-    }
+//get the total equal to the smallest plate size * 2
+function calcPercent(lift, percent) {
+    return (Math.floor((lift * percent) / 5) * 5)
+}
+
+function calcPlates(lift, system) {
+    const lbs = [45, 35, 25, 10, 5, 2.5];
+    const kgs = [20, 15, 10, 5, 2.5];
+    const platesNeeded = [];
     
-    function calcPlates(lift, system) {
-        const lbs = [45, 35, 25, 10, 5, 2.5];
-        const kgs = [20, 15, 10, 5, 2.5];
-        const platesNeeded = [];
-        
-        //This calculation will output in the array platesNeeded what weights will be used on each side of the bar
-        //determine english or metric
-        if (system === 'lbs') {
-            //subtract weight of bar
-            let total = lift - 45;
-            //iterate through array of plates used
-            lbs.forEach(plate => {
-                //determine if the current iteration plate will be used
-                if (Math.floor(total / (plate*2)) >= 1) {
-                    //determine if multiple plates will be used
-                    if (Math.floor(total / (plate*2)) >= 2) {
-                        //add multiple instances of that plate to the array
-                        for (let i = 0; i < (Math.floor(total/(plate*2)) - 1); i++) {
-                            platesNeeded.push(plate);
-                        }
+    //This calculation will output in the array platesNeeded what weights will be used on each side of the bar
+    //determine english or metric
+    if (system === 'lbs') {
+        //subtract weight of bar
+        let total = lift - 45;
+        //iterate through array of plates used
+        lbs.forEach(plate => {
+            //determine if the current iteration plate will be used
+            if (Math.floor(total / (plate*2)) >= 1) {
+                //determine if multiple plates will be used
+                if (Math.floor(total / (plate*2)) >= 2) {
+                    //add multiple instances of that plate to the array
+                    for (let i = 0; i < (Math.floor(total/(plate*2)) - 1); i++) {
+                        platesNeeded.push(plate);
+                        total -= (Math.floor(total / (plate*2)) * (plate*2));
                     }
-                    platesNeeded.push(plate);
-                    
-                    total -= (Math.floor(total / (plate*2)) * (plate*2));
                 }
-            });
-        } 
-        else if (system === 'kgs') {
-            //identical, but 20kg bar
-            let total = lift - 20;
-            kgs.forEach(plate => {
-                if (Math.floor(total / (plate*2)) >= 1) {
-                    if (Math.floor(total / (plate*2)) >= 2) {
-                        for (let i = 0; i < Math.floor(total/(plate*2) - 1); i++) {
-                            platesNeeded.push(plate);
-                        }
+                platesNeeded.push(plate);
+                
+                total -= (Math.floor(total / (plate*2)) * (plate*2));
+            }
+        });
+    } 
+    else if (system === 'kgs') {
+        //identical, but 20kg bar
+        let total = lift - 20;
+        kgs.forEach(plate => {
+            if (Math.floor(total / (plate*2)) >= 1) {
+                if (Math.floor(total / (plate*2)) >= 2) {
+                    for (let i = 0; i < (Math.floor(total/(plate*2)) - 1); i++) {
+                        platesNeeded.push(plate);
                     }
-                    platesNeeded.push(plate);
-                    
-                    total -= (Math.floor(total / (plate*2)) * (plate*2));
                 }
-            });
-        }
-
-        return platesNeeded;
+                platesNeeded.push(plate);
+                
+                total -= (Math.floor(total / (plate*2)) * (plate*2));
+            }
+        });
     }
+
+    return platesNeeded;
 }
