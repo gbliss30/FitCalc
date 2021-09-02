@@ -1,7 +1,7 @@
 <!--
 Designed by Gabriel Bliss, © 2021
 Created on: 08/25/2021
-Last update: 08/26/2021
+Last update: 08/31/2021
 -->
 
 <!DOCTYPE html>
@@ -19,40 +19,50 @@ Last update: 08/26/2021
     <title>FitCalc</title>
 </head>
 <body>
+    <span id="alert"></span>
     <main class="container">
         <!-- input -->
         <section class="input">
             <form id="basicForm">
-                <input type="radio" name="system" id="eng" value="eng" checked>
-                <label for="eng">English</label>
-                <input type="radio" name="system" id="met" value="met" >
-                <label for="met">Metric</label><br><br>
-
-                <input type="text" id="weight" placeholder="Weight in lbs/kg" required ><br>
-                <input type="number" id="height" placeholder="Height in inches/cm" required ><br>
-                <input type="number" id="age" placeholder="Age in years" required ><br><br>
-
-                <input type="radio" name="gender" id="male" value="male" checked>
-                <label for="male">Male</label>
-                <input type="radio" name="gender" id="female" value="female">
-                <label for="female">Female</label><br><br>
-
-                <select id="activity" name="activity">
-                    <option selected="true" disabled="disabled" value="null" hidden>How much do you exercise?</option>
-                    <option value="1.2">Sedentary</option>
-                    <option value="1.375">Lightly Active (1-3x Wk)</option>
-                    <option value="1.55">Moderately Active (3-5x Wk)</option>
-                    <option value="1.725">Very Active (6-7x Wk)</option>
-                    <option value="1.9">Extremely Active (2x/Day)</option>
-                </select><br><br>
-
-                <p>Submit basic measurements</p>
-                <hr>
-                <div class="buttons">
-                    <input type="submit" id="submit">
-                    <input type="reset" id="reset">
+                <h3>Basic Measurements</h2>
+                <div class="choice">
+                    <input type="radio" name="system" id="eng" value="eng" checked>
+                    <label for="eng">English</label>
+                    <input type="radio" name="system" id="met" value="met" >
+                    <label for="met">Metric</label>
                 </div>
-                <hr>
+
+                <div class="choice">
+                    <input type="text" id="weight" placeholder="Weight in lbs/kg" required >
+                    <input type="number" id="height" placeholder="Height in inches/cm" required >
+                    <input type="number" id="age" placeholder="Age in years" required >
+                </div>
+                
+
+                <div class="choice">
+                    <input type="radio" name="gender" id="male" value="male" checked>
+                    <label for="male">Male</label>
+                    <input type="radio" name="gender" id="female" value="female">
+                    <label for="female">Female</label>
+                </div>
+
+                <div class="choice">
+                    <select id="activity" name="activity">
+                        <option selected="true" disabled="disabled" value="null" hidden>How active are you?</option>
+                        <option value="1.2">Sedentary</option>
+                        <option value="1.375">Lightly Active (1-3x Wk)</option>
+                        <option value="1.55">Moderately Active (3-5x Wk)</option>
+                        <option value="1.725">Very Active (6-7x Wk)</option>
+                        <option value="1.9">Extremely Active (2x/Day)</option>
+                    </select>
+                </div>
+                
+
+                <div class="buttons">
+                    <p>Calculate BMI, BMR, & TDEE</p>
+                    <input type="submit" id="submitBasic">
+                    <input type="reset" id="resetBasic">
+                </div>
             </form>
             
             <!-- <ul>
@@ -60,55 +70,65 @@ Last update: 08/26/2021
                 <li>Starting Strength</li>
             </ul> -->
 
-            <form>
+            <form id="fiveThreeOne-Form">
                 <div class="liftInput">
-                    <p>OHP</p>
-                    <input class="weight" type="number" id="ohpWeight" placeholder="Weight" required >
-                    <input class="reps" type="number" id="ohpReps" placeholder="Reps" required >
+                    <div class="fivethreeone-container">
+                        <h3>5/3/1 Calculator</h3>
+                        <div class="choice">
+                            <input type="radio" name="system531" id="eng" value="eng" checked>
+                            <label for="eng">English<br>(45, 35, 25, 10, 5, 2.5 lb weights)</label><br>
+                            <input type="radio" name="system531" id="met" value="met" >
+                            <label for="met">Metric<br>(20, 15, 10, 5, 2.5 kg weights)</label>
+                        </div>
+                        <p>Overhead Press</p>
+                        <div class="lift">
+                            <input name="fivethreeone" type="number" id="Weight" placeholder="Weight" required value='200'>
+                            <input name="fivethreeone" type="number" id="Reps" placeholder="Reps" required value='1'>
+                        </div>
+                        <p>Deadlift</p>
+                        <div class="lift">
+                            <input name="fivethreeone" type="number" id="Weight" placeholder="Weight" required value='480'>
+                            <input name="fivethreeone" type="number" id="Reps" placeholder="Reps" required value='2'>
+                        </div>
+                        <p>Bench</p>
+                        <div class="lift">    
+                            <input name="fivethreeone" type="number" id="Weight" placeholder="Weight" required value='300'>
+                            <input name="fivethreeone" type="number" id="Reps" placeholder="Reps" required value='3'>
+                        </div>
+                        <p>Squat</p>
+                        <div class="lift">
+                            <input name="fivethreeone" type="number" id="Weight" placeholder="Weight" required value='600'>
+                            <input name="fivethreeone" type="number" id="Reps" placeholder="Reps" required value='4'>
+                        </div>
+                    </div>
+
+                    <select id="oneRepMaxFormula" name="oneRepMaxFormula">
+                        <option disabled="disabled" value="null" hidden>What one rep max formula?</option>
+                        <option value="Brzycki" selected="true">Brzycki (&lt;5 reps, reccomended)</option>
+                        <option value="Epley">Epley (&lt;10 reps max)</option>
+                    </select>
                 </div>
-                <div class="liftInput">
-                    <p>Deadlift</p>
-                    <input class="weight" type="number" id="deadliftWeight" placeholder="Weight" required >
-                    <input class="reps" type="number" id="deadliftReps" placeholder="Reps" required >
-                </div>
-                <div class="liftInput">
-                    <p>Bench</p>
-                    <input class="weight" type="number" id="benchWeight" placeholder="Weight" required >
-                    <input class="reps" type="number" id="benchReps" placeholder="Reps" required >
-                </div>
-                <div class="liftInput">
-                    <p>Squat</p>
-                    <input class="weight" type="number" id="squatWeight" placeholder="Weight" required >
-                    <input class="reps" type="number" id="squatReps" placeholder="Reps" required >
-                </div><br>
-                <hr>
+                
                 <div class="buttons">
-                    <input type="submit" id="submit">
-                    <input type="reset" id="reset">
+                    <p>Calculate Workout Routine</p>
+                    <input type="submit" id="submitWeight">
+                    <input type="reset" id="resetWeight">
                 </div>
-                <hr>
             </form>
         </section>
-
         <!-- output -->
         <section class="output">
             <div class="basic">
-                <span id="alert"></span>
-                <span id="BMI"></span><br>
-                <span id="BMR"></span><br>
-                <span id="TDEE"></span><br>
+                
+                <span id="BMI"></span>
+                <span id="BMR"></span>
+                <span id="TDEE"></span>
             </div>
-            <div class="programOutput">
-                <div class="gridContainer">
-                    <div class="gridTitle"></div>
-                    <div class="gridTitle"></div>
-                    <div class="gridTitle"></div>
-                    <div class="gridTitle"></div>
-                </div>
+            <div class="weight">
             </div>
         </section>
     </main>
     <script src="./scripts/main.js"></script>
-    <script src="./scripts/531.js"></script>
+    <script src="./scripts/workouts.js"></script>
 </body>
 </html>

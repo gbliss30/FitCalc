@@ -14,7 +14,7 @@ const tdeeOutput = document.querySelector('#TDEE');
 const alert = document.querySelector('#alert');
 
 //submit
-const submit = document.querySelector('#submit').addEventListener('click', e => {
+const submit = document.querySelector('#submitBasic').addEventListener('click', e => {
     e.preventDefault();
     const selectedGender = gender[0].checked ? "male" : "female";
     const system = measurement[0].checked ? "english" : "metric";
@@ -24,15 +24,19 @@ const submit = document.querySelector('#submit').addEventListener('click', e => 
         TDEE;
 
     //Check falsy & run calculations
-    if (weight.value && height.value && age.value && activity.value !== "null") {
-        outputContainer.style.visibility = 'visible';
-        BMI = calcBMI(weight.value, height.value, system);
-        BMR = calcBMR(weight.value, height.value, age.value, selectedGender, system).toFixed(1);
-        TDEE = calcTDEE(BMR, activity.value, system).toFixed(1);
+    if (activity.value !== "null") {
+        if (weight.value && height.value && age.value) {
+            outputContainer.style.visibility = 'visible';
+            showAlert('Success!', 'success');
+            BMI = calcBMI(weight.value, height.value, system);
+            BMR = calcBMR(weight.value, height.value, age.value, selectedGender, system).toFixed(1);
+            TDEE = calcTDEE(BMR, activity.value, system).toFixed(1);
+        } else {
+            showAlert('Please enter correct values', 'error');
+        }
     } else {
-        showAlert('Please enter correct values', 'error')
+        showAlert('Please select an activity level', 'error');
     }
-    
 
     //Output
     bmiOutput.innerHTML = `BMI: ${BMI[0].toFixed(1)}, ${BMI[1]}`
@@ -41,7 +45,7 @@ const submit = document.querySelector('#submit').addEventListener('click', e => 
 });
 
 //clear output
-const reset = document.querySelector('#reset').addEventListener('click', e => {
+const reset = document.querySelector('#resetBasic').addEventListener('click', e => {
     e.preventDefault();
     let output = alert.parentElement.children;
     Object.values(output).forEach(node => {
