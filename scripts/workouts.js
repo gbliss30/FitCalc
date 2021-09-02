@@ -237,14 +237,16 @@ function calcPlates(lift, system) {
         //identical, but 20kg bar
         let total = lift - 20;
         kgs.forEach(plate => {
-            if (Math.floor(total / (plate*2)) >= 1) {
-                if (Math.floor(total / (plate*2)) >= 2) {
-                    for (let k = 0; k < Math.floor(total/(plate*2) - 1); i++) {
+            let plateMath = Math.floor(total / (plate*2));
+            if (plateMath >= 1) {
+                if (plateMath >= 2) {
+                    for (let i = 1; i < plateMath; i++) {
                         platesNeeded.push(plate);
+                        total -= (Math.floor(total / (plate*2)) * (plate*2));
                     }
                 }
                 platesNeeded.push(plate);
-                
+
                 total -= (Math.floor(total / (plate*2)) * (plate*2));
             }
         });
