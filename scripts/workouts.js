@@ -74,7 +74,7 @@ function calcFiveThreeOne(lifts, formula, system) {
     <p>When you have reached Week 4, restart with +5 pounds on Bench and OHP, +10 pounds on Squat and Deadlift.</p><br>
     <p>The assistance program is optional, or can be substituted for other similar pulling/pushing motions.</p><br>
     <p>The last set on each day is read as "The minimum is X reps, but do as many as you can." This is where strength is built. If you can't do the minimum, your 1RM is not accurate.</p><br>
-    <p>Your 3RM should equal aproximately 90% of your 1RM. If at any point in the future </p>
+    <p>Your 3RM should equal aproximately 90% of your 1RM. If at any point in the future this is too low or high adjust your estimated 1RM.</p>
     <p>Bar assumed to be 45Lbs/20Kgs, working weight (<strong>bold</strong>) rounded down to the closest 2.5lbs/kg. Parenthesis denotes the weights you will load onto each side of the bar.</p><br>
     <table id="displayData">
         <tr>
